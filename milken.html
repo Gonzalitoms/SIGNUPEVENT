@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gnapse Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    /* Video background */
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Centered form container */
+    .form-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 90%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 600px) {
+      .form-wrapper {
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <!-- Klaviyo embed script -->
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UyGwBX"></script>
+</head>
+<body>
+
+  <!-- Background video -->
+  <video autoplay muted loop id="background-video">
+    <source src="https://cdn.shopify.com/videos/c/o/v/d02ff915d76642e1abcea124b67d0e6a.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Klaviyo form container -->
+  <div class="form-wrapper">
+    <div class="klaviyo-form-XextNU"></div>
+  </div>
+
+  <!-- Auto-refresh script -->
+  <script>
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === "childList") {
+          const allElements = document.querySelectorAll("*");
+          allElements.forEach((el) => {
+            const text = el.textContent?.trim();
+            if (text === "Thanks for subscribing!") {
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            }
+          });
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  </script>
+
+</body>
+</html>
